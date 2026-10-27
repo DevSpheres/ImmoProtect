@@ -1,0 +1,18 @@
+ImmoProtect — microsite bilingue « Découvrir ImmoProtect »
+===========================================================
+Contenu : index.html + 7 captures (jpg) + hero.jpg + video.mp4 (720p, ~10 Mo).
+Tout est relatif : gardez les fichiers dans le même dossier.
+Mode présentation : bouton en haut de page, ou ouvrir index.html#presentation (flèches, clavier, balayage ; Échap pour quitter).
+Langues : bouton FR / العربية en haut de page (le choix est mémorisé dans le navigateur).
+
+Ouvrir en local : double-cliquez sur index.html.
+
+Mettre en ligne :
+- Render (app existante) : copiez le dossier dans /public/decouvrir et servez-le
+  en statique (Express : app.use('/decouvrir', express.static('public/decouvrir'))).
+- Netlify / Vercel / GitHub Pages : glissez-déposez le dossier tel quel.
+
+À modifier avant diffusion (dans index.html) :
+- WHATSAPP_NUMBER (début du <script>) : votre numéro au format 212XXXXXXXXX
+- Téléphone et e-mail affichés dans la section Contact
+- Les textes FR et AR sont dans l'objet T du <script> (clés identiques dans les deux langues)
