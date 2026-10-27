@@ -284,7 +284,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
       </div>
     </div>
     <div class="player">
-      <video id="film" poster="hero.jpg" preload="metadata" playsinline controls src="video.mp4"></video>
+      <video id="film" poster="hero.jpg" preload="metadata" playsinline controls src="small.mp4"></video>
       <button class="play" id="playbtn" aria-label="Play"><div><span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><small data-i18n="play"></small></div></button>
     </div>
   </div>
@@ -707,7 +707,7 @@ function buildSlides(){
   stage.innerHTML = ''; pSlides = [];
   const mk = html => { const d = document.createElement('div'); d.className = 'slide'; d.innerHTML = `<div class="in">${html}</div>`; stage.appendChild(d); pSlides.push(d); return d; };
   // 1 film
-  const s1 = mk(`<div class="player"><video id="pfilm" poster="hero.jpg" preload="metadata" playsinline controls src="video.mp4"></video></div>`);
+  const s1 = mk(`<div class="player"><video id="pfilm" poster="hero.jpg" preload="metadata" playsinline controls src="small.mp4"></video></div>`);
   // 2 promise
   mk(`<span class="tag" data-i18n="hero_tag"></span><h1 data-i18n="hero_h1"></h1><p class="lead" data-i18n="hero_lead"></p><div class="strip3"><div><strong data-i18n="s1t"></strong><span data-i18n="s1d"></span></div><div><strong data-i18n="s2t"></strong><span data-i18n="s2d"></span></div><div><strong data-i18n="s3t"></strong><span data-i18n="s3d"></span></div></div>`);
   // 3 services
