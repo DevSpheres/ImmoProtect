@@ -1,0 +1,792 @@
+<!doctype html>
+<html lang="fr" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="ImmoProtect, syndic de copropriété au Maroc : sécurité, espaces verts, piscine, réparations, comptes conformes et application résidents. إيموبروتكت، سانديك الإقامات بالمغرب.">
+<title>Découvrir ImmoProtect</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=Tajawal:wght@400;500;700&display=swap">
+<style>
+html,body{margin:0}img{max-width:100%}[hidden]{display:none!important}
+/* Layout: a long bilingual sales page in alternating bands (sand / navy), one column, content max 1120px; dir="rtl" on <html> flips the layout for Arabic */
+:root{
+  --bg:#f5f1ea; --bg2:#ffffff; --navy:#1e2b4a; --navy2:#16213a; --fg:#1b2238; --muted:#5f6880; --line:#e2dcd2;
+  --red:#902c34; --red2:#b23a44; --onnavy:#eef0f6; --onnavy-muted:#aeb6cc; --good:#2e7d4f; --warn:#b4701a;
+  --sand:#e9e2d6; --shadow:0 18px 50px rgba(30,43,74,.14);
+  --display:"Outfit",system-ui,sans-serif; --body:"Source Sans 3",system-ui,sans-serif; --ar:"Tajawal",system-ui,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#141a2a; --bg2:#1b2336; --navy:#101727; --navy2:#0c111d; --fg:#e8eaf1; --muted:#a3abc0; --line:#2a3450;
+  --red:#d05a63; --red2:#e06d75; --onnavy:#eef0f6; --onnavy-muted:#aeb6cc; --good:#5cc08a; --warn:#e0a24a;
+  --sand:#222c44; --shadow:0 18px 50px rgba(0,0,0,.45); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#141a2a; --bg2:#1b2336; --navy:#101727; --navy2:#0c111d; --fg:#e8eaf1; --muted:#a3abc0; --line:#2a3450;
+  --red:#d05a63; --red2:#e06d75; --onnavy:#eef0f6; --onnavy-muted:#aeb6cc; --good:#5cc08a; --warn:#e0a24a;
+  --sand:#222c44; --shadow:0 18px 50px rgba(0,0,0,.45); color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:17px;line-height:1.55;margin:0}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--navy)}
+h1,h2,h3{font-family:var(--display);line-height:1.15;margin:0;text-wrap:balance}
+h1{font-size:clamp(2.1rem,5.2vw,3.6rem);font-weight:700;letter-spacing:-.01em}
+h2{font-size:clamp(1.6rem,3.4vw,2.4rem);font-weight:600}
+h3{font-size:1.15rem;font-weight:600}
+p{margin:0}
+a{color:inherit}
+[dir="rtl"] body,[dir="rtl"] h1,[dir="rtl"] h2,[dir="rtl"] h3,[dir="rtl"] .btn,[dir="rtl"] .eyebrow,[dir="rtl"] .tab,[dir="rtl"] label,[dir="rtl"] input,[dir="rtl"] select,[dir="rtl"] .step b,[dir="rtl"] .kpi b,[dir="rtl"] .report .rh,[dir="rtl"] .strip strong,[dir="rtl"] .proc .p::before{font-family:var(--ar)}
+[dir="rtl"] h1{letter-spacing:0;line-height:1.3}
+[dir="rtl"] .eyebrow{letter-spacing:0}
+[dir="rtl"] body{font-size:18px}
+.sub{font-family:var(--ar);direction:rtl;unicode-bidi:isolate}
+[dir="rtl"] .sub{font-family:var(--body);direction:ltr}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.band{padding-block:72px}
+.band.navy{background:var(--navy);color:var(--onnavy)}
+.band.white{background:var(--bg2)}
+.eyebrow{font-family:var(--display);font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--red);font-weight:600}
+.navy .eyebrow{color:#e9a2a8}
+.lead{font-size:1.2rem;color:var(--muted);max-width:60ch}
+.navy .lead{color:var(--onnavy-muted)}
+.sechead{display:grid;gap:12px;max-width:720px;margin-bottom:36px}
+.sechead .sub{font-size:1.2rem;color:var(--muted)}
+.navy .sechead .sub{color:var(--onnavy-muted)}
+
+/* top bar */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--navy);color:var(--onnavy);border-bottom:1px solid rgba(255,255,255,.08)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:60px}
+.logo{font-family:var(--display);font-weight:700;font-size:1.35rem;letter-spacing:-.01em;text-decoration:none;direction:ltr}
+.logo b{color:#e26c75}
+.nav{display:flex;gap:22px;font-size:.95rem}
+.nav a{text-decoration:none;color:var(--onnavy-muted)}
+.nav a:hover,.nav a:focus-visible{color:var(--onnavy)}
+@media (max-width:860px){.nav{display:none}}
+.right{display:flex;align-items:center;gap:10px}
+.lang{display:flex;background:rgba(255,255,255,.08);border-radius:999px;padding:3px}
+.lang button{font:inherit;font-size:.9rem;padding:6px 12px;border:0;border-radius:999px;background:transparent;color:var(--onnavy-muted);cursor:pointer;font-family:var(--display);font-weight:600}
+.lang button.ar{font-family:var(--ar)}
+.lang button[aria-pressed="true"]{background:#fff;color:var(--navy)}
+.btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--display);font-weight:600;font-size:.98rem;padding:11px 20px;border-radius:999px;text-decoration:none;border:0;cursor:pointer;transition:transform .15s,background .15s}
+.btn:hover{transform:translateY(-1px)}
+.btn:focus-visible,a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #e9a2a8;outline-offset:2px}
+.btn.red{background:var(--red);color:#fff}
+.btn.red:hover{background:var(--red2)}
+.btn.ghost{background:transparent;color:inherit;border:1.5px solid currentColor}
+.btn.wa{background:#25a24a;color:#fff}
+.btn.wa:hover{background:#1f8a3e}
+.btn svg{width:18px;height:18px;flex:none}
+@media (max-width:560px){.top .btn.red{display:none}}
+
+/* hero */
+.hero{background:var(--navy);color:var(--onnavy);padding-block:56px 72px}
+.hero .wrap{display:grid;gap:40px;grid-template-columns:1.05fr 1fr;align-items:center}
+@media (max-width:900px){.hero .wrap{grid-template-columns:1fr}}
+.hero .tag{display:inline-block;font-family:var(--display);font-size:.9rem;padding:6px 14px;border:1px solid rgba(255,255,255,.25);border-radius:999px;color:var(--onnavy-muted);margin-bottom:22px}
+[dir="rtl"] .hero .tag{font-family:var(--ar)}
+.hero h1 span{color:#e9a2a8}
+.hero .sub{font-size:1.4rem;color:var(--onnavy-muted);margin-top:14px}
+.hero .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.player{position:relative;border-radius:18px;overflow:hidden;box-shadow:var(--shadow);background:#000;aspect-ratio:16/9;max-width:100%}
+.player video{width:100%;height:100%;display:block;object-fit:cover}
+.player .play{position:absolute;inset:0;display:grid;place-items:center;background:linear-gradient(to top,rgba(10,15,30,.55),rgba(10,15,30,.05));cursor:pointer;border:0;color:#fff;font-family:var(--display);font-weight:600;font-size:1rem}
+.player .play span{display:grid;place-items:center;width:84px;height:84px;border-radius:50%;background:var(--red);box-shadow:0 10px 30px rgba(0,0,0,.4);transition:transform .15s;margin:0 auto}
+.player .play:hover span{transform:scale(1.06)}
+.player .play svg{width:34px;height:34px;margin-inline-start:5px}
+.player .play small{display:block;margin-top:14px;text-shadow:0 2px 8px rgba(0,0,0,.6);text-align:center}
+
+/* promise strip */
+.strip{background:var(--bg2);border-bottom:1px solid var(--line)}
+.strip .wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+.strip .item{padding-block:26px;padding-inline-end:22px;display:grid;gap:4px;min-width:0}
+.strip .item+.item{border-inline-start:1px solid var(--line);padding-inline-start:22px}
+.strip strong{font-family:var(--display);font-size:1.1rem}
+.strip span{color:var(--muted);font-size:.95rem}
+@media (max-width:760px){.strip .wrap{grid-template-columns:1fr}.strip .item+.item{border-inline-start:0;border-top:1px solid var(--line);padding-inline-start:0}}
+
+/* services */
+.services{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+@media (max-width:900px){.services{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.services{grid-template-columns:1fr}}
+.svc{background:var(--bg2);border:1px solid var(--line);border-radius:14px;padding:24px;display:grid;gap:10px;min-width:0}
+.svc .ic{width:44px;height:44px;border-radius:12px;background:var(--sand);display:grid;place-items:center;color:var(--navy)}
+:root[data-theme="dark"] .svc .ic{color:var(--onnavy)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .svc .ic{color:var(--onnavy)}}
+.svc .ic svg{width:24px;height:24px}
+.svc h3 .sub{display:block;font-size:1rem;color:var(--muted);font-weight:500;margin-top:2px}
+.svc p{color:var(--muted);font-size:.98rem}
+
+/* app demo */
+.demo{display:grid;grid-template-columns:300px 1fr;gap:34px;align-items:start}
+@media (max-width:900px){.demo{grid-template-columns:1fr}}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.tab{font-family:var(--display);font-weight:600;font-size:.95rem;padding:9px 16px;border-radius:999px;border:1.5px solid rgba(255,255,255,.25);background:transparent;color:var(--onnavy-muted);cursor:pointer}
+.tab[aria-selected="true"]{background:var(--red);border-color:var(--red);color:#fff}
+.steps{display:grid;gap:8px}
+.step{text-align:start;background:transparent;border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:12px 14px;color:var(--onnavy-muted);cursor:pointer;display:grid;grid-template-columns:28px 1fr;gap:10px;align-items:start;font:inherit}
+.step b{display:block;color:var(--onnavy);font-family:var(--display);font-weight:600;font-size:.98rem}
+.step span{font-size:.9rem}
+.step i{font-style:normal;font-family:var(--display);font-weight:700;width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.1);display:grid;place-items:center;font-size:.85rem}
+.step[aria-current="true"]{background:rgba(255,255,255,.08);border-color:#e26c75}
+.step[aria-current="true"] i{background:var(--red);color:#fff}
+.device{background:#0d1322;border-radius:16px;padding:10px;box-shadow:var(--shadow);min-width:0}
+.device .bar{display:flex;gap:6px;padding:4px 6px 10px}
+.device .bar i{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.18)}
+.device img{display:block;width:100%;border-radius:8px;max-width:100%}
+.device .cap{color:var(--onnavy-muted);font-size:.92rem;padding:12px 6px 4px;min-height:52px}
+.device .cap b{color:var(--onnavy)}
+
+/* residence preview */
+.diag{display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:start}
+@media (max-width:900px){.diag{grid-template-columns:1fr}}
+form{display:grid;gap:16px}
+.field{display:grid;gap:6px}
+label{font-family:var(--display);font-weight:600;font-size:.92rem}
+label small{font-weight:400;color:var(--muted);font-family:var(--body);font-size:.88rem}
+input,select{font:inherit;padding:11px 13px;border-radius:10px;border:1.5px solid var(--line);background:var(--bg2);color:var(--fg);width:100%;min-width:0}
+input:focus,select:focus{border-color:var(--navy)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:520px){.row2{grid-template-columns:1fr}}
+.checks{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.checks label{display:flex;gap:10px;align-items:center;font-weight:500;font-size:.95rem;padding:9px 11px;border:1.5px solid var(--line);border-radius:10px;background:var(--bg2);cursor:pointer}
+.checks input{width:auto;accent-color:var(--red)}
+.report{background:var(--navy);color:var(--onnavy);border-radius:18px;padding:28px;box-shadow:var(--shadow);display:grid;gap:18px;position:sticky;top:76px}
+.report .rh{font-family:var(--display);font-size:1.3rem;font-weight:600}
+.report .rh small{display:block;font-size:.85rem;color:var(--onnavy-muted);font-weight:400;margin-top:4px}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.kpi{background:rgba(255,255,255,.06);border-radius:12px;padding:14px 12px;display:grid;gap:4px;min-width:0}
+.kpi b{font-family:var(--display);font-size:1.3rem;font-variant-numeric:tabular-nums}
+.kpi span{font-size:.8rem;color:var(--onnavy-muted);line-height:1.25}
+.kpi.good b{color:#8fe0b2}
+.report ul{margin:0;padding-inline-start:18px;color:var(--onnavy-muted);display:grid;gap:6px;font-size:.98rem}
+.report ul b{color:var(--onnavy)}
+.report .note{font-size:.8rem;color:var(--onnavy-muted);border-top:1px solid rgba(255,255,255,.12);padding-top:12px}
+.report .acts{display:flex;flex-wrap:wrap;gap:10px}
+.toast{font-size:.85rem;color:#8fe0b2;min-height:1.2em}
+
+/* process */
+.proc{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+@media (max-width:760px){.proc{grid-template-columns:1fr}}
+.proc .p{padding:24px;border-top:3px solid var(--red);background:var(--bg2);display:grid;gap:10px;min-width:0}
+.proc .p::before{content:attr(data-step);font-family:var(--display);font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--red);font-weight:600}
+[dir="rtl"] .proc .p::before{letter-spacing:0}
+.proc p{color:var(--muted);font-size:.98rem}
+
+/* compliance */
+.law{display:grid;grid-template-columns:1.2fr 1fr;gap:34px;align-items:center}
+@media (max-width:900px){.law{grid-template-columns:1fr}}
+.law ul{margin:0;padding-inline-start:20px;display:grid;gap:8px;color:var(--muted)}
+.law .doc{background:var(--bg2);border:1px solid var(--line);border-radius:14px;padding:22px;display:grid;gap:12px;font-size:.95rem}
+.law .doc .l{display:flex;justify-content:space-between;gap:10px;border-bottom:1px dashed var(--line);padding-bottom:8px}
+.law .doc .l span{color:var(--muted)}
+.law .doc .l b{font-variant-numeric:tabular-nums}
+
+/* contact */
+.contact .wrap{display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:center}
+@media (max-width:900px){.contact .wrap{grid-template-columns:1fr}}
+.ctabox{background:var(--bg2);color:var(--fg);border-radius:18px;padding:28px;display:grid;gap:14px;box-shadow:var(--shadow)}
+.ctabox .line{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--line);font-variant-numeric:tabular-nums}
+.ctabox .line span{color:var(--muted);font-size:.9rem}
+.ctabox .line b{direction:ltr;unicode-bidi:isolate}
+.ctabox .line button{font:inherit;font-size:.85rem;padding:6px 12px;border-radius:999px;border:1.5px solid var(--line);background:transparent;color:var(--fg);cursor:pointer}
+footer{padding-block:28px;font-size:.9rem;color:var(--muted);border-top:1px solid var(--line)}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
+
+/* presentation mode */
+.pres{position:fixed;inset:0;z-index:20;background:var(--navy);color:var(--onnavy);display:grid;grid-template-rows:auto 1fr auto;overflow:hidden}
+.pres[hidden]{display:none}
+.pres .pbar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:12px;padding-top:calc(12px + env(safe-area-inset-top,0px));padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));border-bottom:1px solid rgba(255,255,255,.1)}
+.pres .pbar .logo{font-size:1.2rem}
+.pres .prog{position:absolute;top:0;left:0;height:3px;background:var(--red);transition:width .4s;z-index:2}
+.pres .pcount{font-family:var(--display);font-size:.85rem;color:var(--onnavy-muted);font-variant-numeric:tabular-nums}
+.pres .pclose{font:inherit;font-family:var(--display);font-weight:600;font-size:.9rem;padding:7px 14px;border-radius:999px;border:1.5px solid rgba(255,255,255,.3);background:transparent;color:var(--onnavy);cursor:pointer}
+.stage{position:relative;perspective:1600px;overflow:hidden;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.slide{position:absolute;inset:0;display:grid;place-items:center;padding:24px max(16px,env(safe-area-inset-left,0px));overflow:auto;transform-style:preserve-3d;transition:transform .7s cubic-bezier(.2,.7,.2,1),opacity .7s;opacity:0;pointer-events:none;transform:translateX(60%) rotateY(-28deg) scale(.92)}
+[dir="rtl"] .slide{transform:translateX(-60%) rotateY(28deg) scale(.92)}
+.slide.on{opacity:1;pointer-events:auto;transform:none}
+.slide.out{opacity:0;transform:translateX(-60%) rotateY(28deg) scale(.92)}
+[dir="rtl"] .slide.out{transform:translateX(60%) rotateY(-28deg) scale(.92)}
+.slide .in{width:min(1120px,100%);display:grid;gap:22px;align-content:center;min-height:0}
+.slide h1{font-size:clamp(2rem,4.6vw,3.4rem)}
+.slide h2{font-size:clamp(1.6rem,3.6vw,2.6rem)}
+.slide .lead{color:var(--onnavy-muted)}
+.slide .player{width:min(1000px,100%);margin:0 auto}
+.slide .strip3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.slide .strip3 div{background:rgba(255,255,255,.06);border-radius:14px;padding:20px;display:grid;gap:6px;min-width:0}
+.slide .strip3 strong{font-family:var(--display);font-size:1.15rem}
+.slide .strip3 span{color:var(--onnavy-muted);font-size:.95rem}
+.slide .services .svc{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.1)}
+.slide .services .svc p,.slide .services .svc h3 .sub{color:var(--onnavy-muted)}
+.slide .services .svc .ic{background:rgba(255,255,255,.1);color:var(--onnavy)}
+.slide .appv{display:grid;grid-template-columns:1fr 1.5fr;gap:28px;align-items:center}
+.slide .appv .device{transform:rotateY(0deg);transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+.slide:not(.on) .appv .device{transform:rotateY(-35deg)}
+.slide .appv .steps{margin-top:12px}
+.slide .diag .report{position:static}
+.slide .diag label,.slide .diag label small{color:var(--onnavy)}
+.slide .diag input,.slide .diag select{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.2);color:var(--onnavy)}
+.slide .diag .checks label{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.15)}
+.slide .diag .report{background:rgba(255,255,255,.06)}
+.slide .proc .p{background:rgba(255,255,255,.06)}
+.slide .proc h3{color:var(--onnavy)}
+.slide .proc p{color:var(--onnavy-muted)}
+.slide .law ul{color:var(--onnavy-muted)}
+.slide .law .doc{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.12)}
+.slide .law .doc .l span{color:var(--onnavy-muted)}
+.slide .ctabox{background:rgba(255,255,255,.06);color:var(--onnavy)}
+.slide .ctabox .line{border-color:rgba(255,255,255,.12)}
+.slide .ctabox .line span{color:var(--onnavy-muted)}
+.slide .ctabox .line button{color:var(--onnavy);border-color:rgba(255,255,255,.3)}
+.slide .two{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center}
+@media (max-width:900px){.slide .appv,.slide .two{grid-template-columns:1fr}.slide .strip3{grid-template-columns:1fr}}
+.pres .pnav{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:12px;padding-bottom:calc(12px + env(safe-area-inset-bottom,0px));padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));border-top:1px solid rgba(255,255,255,.1)}
+.pres .pnav .dots{display:flex;gap:6px;flex-wrap:wrap;justify-content:center}
+.pres .pnav .dots button{width:10px;height:10px;border-radius:50%;border:0;background:rgba(255,255,255,.25);cursor:pointer;padding:0}
+.pres .pnav .dots button[aria-current="true"]{background:var(--red);transform:scale(1.3)}
+.pres .pnav .arr{font:inherit;font-family:var(--display);font-weight:600;padding:9px 16px;border-radius:999px;border:1.5px solid rgba(255,255,255,.3);background:transparent;color:var(--onnavy);cursor:pointer;display:inline-flex;gap:8px;align-items:center}
+.pres .pnav .arr.next{background:var(--red);border-color:var(--red);color:#fff}
+.pres .pnav .arr:disabled{opacity:.35;cursor:default}
+.pres .pnav .arr svg{width:16px;height:16px}
+[dir="rtl"] .pres .pnav .arr svg{transform:scaleX(-1)}
+.top .btn.pres-btn{background:transparent;border:1.5px solid rgba(255,255,255,.35);color:var(--onnavy);padding:9px 16px}
+@media (max-width:860px){.top .btn.pres-btn span{display:none}.top .btn.pres-btn{padding:9px 11px}}
+@media (prefers-reduced-motion:reduce){.slide,.slide .appv .device{transition:none}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#top">ImmoProtect<b>.</b></a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#services" data-i18n="nav_services"></a><a href="#app" data-i18n="nav_app"></a><a href="#residence" data-i18n="nav_res"></a><a href="#methode" data-i18n="nav_method"></a><a href="#contact" data-i18n="nav_contact"></a>
+    </nav>
+    <div class="right">
+      <div class="lang" role="group" aria-label="Langue / اللغة">
+        <button type="button" id="lang-fr" aria-pressed="true">FR</button>
+        <button type="button" id="lang-ar" class="ar" aria-pressed="false">العربية</button>
+      </div>
+      <button type="button" class="btn pres-btn" id="pres-open"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg><span data-i18n="pres_btn"></span></button>
+      <a class="btn red" href="#residence" data-i18n="top_cta"></a>
+    </div>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <span class="tag" data-i18n="hero_tag"></span>
+      <h1 data-i18n="hero_h1"></h1>
+      <p class="sub" data-i18n="hero_sub"></p>
+      <p class="lead" style="margin-top:18px" data-i18n="hero_lead"></p>
+      <div class="cta">
+        <a class="btn red" href="#app" data-i18n="hero_cta1"></a>
+        <a class="btn ghost" href="#residence" data-i18n="hero_cta2"></a>
+      </div>
+    </div>
+    <div class="player">
+      <video id="film" poster="hero.jpg" preload="metadata" playsinline controls src="video.mp4"></video>
+      <button class="play" id="playbtn" aria-label="Play"><div><span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><small data-i18n="play"></small></div></button>
+    </div>
+  </div>
+</section>
+
+<div class="strip">
+  <div class="wrap">
+    <div class="item"><strong data-i18n="s1t"></strong><span data-i18n="s1d"></span></div>
+    <div class="item"><strong data-i18n="s2t"></strong><span data-i18n="s2d"></span></div>
+    <div class="item"><strong data-i18n="s3t"></strong><span data-i18n="s3d"></span></div>
+  </div>
+</div>
+
+<section class="band" id="services">
+  <div class="wrap">
+    <div class="sechead">
+      <span class="eyebrow" data-i18n="svc_eyebrow"></span>
+      <h2 data-i18n="svc_h2"></h2>
+      <p class="sub" data-i18n="svc_sub"></p>
+    </div>
+    <div class="services">
+      <div class="svc"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3z"/><path d="M9 12l2 2 4-4"/></svg></div><h3><span data-i18n="svc1t"></span> <span class="sub" data-i18n="svc1s"></span></h3><p data-i18n="svc1d"></p></div>
+      <div class="svc"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21V11M12 11c-4 0-6-3-6-7 4 0 6 3 6 7zm0 0c4 0 6-3 6-7-4 0-6 3-6 7z"/><path d="M5 21h14"/></svg></div><h3><span data-i18n="svc2t"></span> <span class="sub" data-i18n="svc2s"></span></h3><p data-i18n="svc2d"></p></div>
+      <div class="svc"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 15c2-1.5 4-1.5 6 0s4 1.5 6 0 4-1.5 6 0"/><path d="M3 19c2-1.5 4-1.5 6 0s4 1.5 6 0 4-1.5 6 0"/><path d="M6 11V6a3 3 0 016 0M12 11V6a3 3 0 016 0"/></svg></div><h3><span data-i18n="svc3t"></span> <span class="sub" data-i18n="svc3s"></span></h3><p data-i18n="svc3d"></p></div>
+      <div class="svc"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14.5 6.5a4 4 0 00-5.3 5.3L4 17l3 3 5.2-5.2a4 4 0 005.3-5.3l-2.5 2.5-2-2 2.5-2.5z"/></svg></div><h3><span data-i18n="svc4t"></span> <span class="sub" data-i18n="svc4s"></span></h3><p data-i18n="svc4d"></p></div>
+      <div class="svc"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></div><h3><span data-i18n="svc5t"></span> <span class="sub" data-i18n="svc5s"></span></h3><p data-i18n="svc5d"></p></div>
+      <div class="svc"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="8" cy="9" r="3"/><circle cx="16" cy="9" r="3"/><path d="M2 20c0-3 3-5 6-5s6 2 6 5M12 20c0-3 2-5 4-5s6 2 6 5"/></svg></div><h3><span data-i18n="svc6t"></span> <span class="sub" data-i18n="svc6s"></span></h3><p data-i18n="svc6d"></p></div>
+    </div>
+  </div>
+</section>
+
+<section class="band navy" id="app">
+  <div class="wrap">
+    <div class="sechead">
+      <span class="eyebrow" data-i18n="app_eyebrow"></span>
+      <h2 data-i18n="app_h2"></h2>
+      <p class="lead" data-i18n="app_lead"></p>
+    </div>
+    <div class="demo">
+      <div>
+        <div class="tabs" role="tablist">
+          <button class="tab" role="tab" data-space="admin" aria-selected="true" data-i18n="tab_admin"></button>
+          <button class="tab" role="tab" data-space="resident" aria-selected="false" data-i18n="tab_res"></button>
+          <button class="tab" role="tab" data-space="tech" aria-selected="false" data-i18n="tab_tech"></button>
+        </div>
+        <div class="steps" id="steps"></div>
+      </div>
+      <div class="device">
+        <div class="bar"><i></i><i></i><i></i></div>
+        <img id="shot" src="02_admin_tableau_de_bord.jpg" alt="ImmoProtect">
+        <div class="cap" id="cap"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="residence">
+  <div class="wrap">
+    <div class="sechead">
+      <span class="eyebrow" data-i18n="res_eyebrow"></span>
+      <h2 data-i18n="res_h2"></h2>
+      <p class="lead" data-i18n="res_lead"></p>
+    </div>
+    <div class="diag">
+      <form id="dform" autocomplete="off">
+        <div class="row2">
+          <div class="field"><label for="rname" data-i18n="f_name"></label><input id="rname" value="Résidence Yasmine"></div>
+          <div class="field"><label for="city" data-i18n="f_city"></label><input id="city" value="Casablanca"></div>
+        </div>
+        <div class="row2">
+          <div class="field"><label for="lots" data-i18n="f_lots"></label><input id="lots" type="number" min="4" max="2000" value="40"></div>
+          <div class="field"><label for="now" data-i18n="f_now"></label>
+            <select id="now"><option value="none" data-i18n="now_none"></option><option value="volunteer" selected data-i18n="now_vol"></option><option value="pro" data-i18n="now_pro"></option><option value="new" data-i18n="now_new"></option></select></div>
+        </div>
+        <div class="field"><label data-i18n="f_eq"></label>
+          <div class="checks">
+            <label><input type="checkbox" id="eq_gate" checked> <span data-i18n="eq_gate"></span></label>
+            <label><input type="checkbox" id="eq_garden" checked> <span data-i18n="eq_garden"></span></label>
+            <label><input type="checkbox" id="eq_pool" checked> <span data-i18n="eq_pool"></span></label>
+            <label><input type="checkbox" id="eq_lift" checked> <span data-i18n="eq_lift"></span></label>
+            <label><input type="checkbox" id="eq_park"> <span data-i18n="eq_park"></span></label>
+            <label><input type="checkbox" id="eq_gym"> <span data-i18n="eq_gym"></span></label>
+          </div>
+        </div>
+        <div class="field"><label data-i18n="f_w"></label>
+          <div class="checks">
+            <label><input type="checkbox" id="w_sec" checked> <span data-i18n="w_sec"></span></label>
+            <label><input type="checkbox" id="w_clean" checked> <span data-i18n="w_clean"></span></label>
+            <label><input type="checkbox" id="w_money"> <span data-i18n="w_money"></span></label>
+            <label><input type="checkbox" id="w_fast"> <span data-i18n="w_fast"></span></label>
+          </div>
+        </div>
+      </form>
+      <div class="report" id="report">
+        <div class="rh"><span id="rtitle">Résidence Yasmine</span><small data-i18n="r_sub"></small></div>
+        <div class="kpis">
+          <div class="kpi"><b id="k_team">—</b><span data-i18n="k_team"></span></div>
+          <div class="kpi good"><b id="k_services">—</b><span data-i18n="k_services"></span></div>
+          <div class="kpi"><b id="k_delay">—</b><span data-i18n="k_delay"></span></div>
+        </div>
+        <ul id="rlist"></ul>
+        <div class="note" data-i18n="r_note"></div>
+        <div class="acts">
+          <a class="btn wa" id="wa" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-8.6 15.1L2 22l5-1.3A10 10 0 1012 2zm0 18.2a8.2 8.2 0 01-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1112 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.6.8-.8 1-.3.2-.5.1a6.7 6.7 0 01-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 00-.7.3 3 3 0 00-.9 2.2 5.2 5.2 0 001.1 2.8 12 12 0 004.6 4c1.7.7 2.1.6 2.8.5a2.4 2.4 0 001.6-1.1 2 2 0 00.1-1.1c0-.1-.2-.2-.5-.3z"/></svg><span data-i18n="r_wa"></span></a>
+          <button class="btn ghost" id="copy" type="button" data-i18n="r_copy"></button>
+        </div>
+        <div class="toast" id="toast" aria-live="polite"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band white" id="methode">
+  <div class="wrap">
+    <div class="sechead">
+      <span class="eyebrow" data-i18n="m_eyebrow"></span>
+      <h2 data-i18n="m_h2"></h2>
+    </div>
+    <div class="proc">
+      <div class="p" data-step=""><h3 data-i18n="m1t"></h3><p data-i18n="m1d"></p></div>
+      <div class="p" data-step=""><h3 data-i18n="m2t"></h3><p data-i18n="m2d"></p></div>
+      <div class="p" data-step=""><h3 data-i18n="m3t"></h3><p data-i18n="m3d"></p></div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="conformite">
+  <div class="wrap law">
+    <div>
+      <div class="sechead" style="margin-bottom:18px">
+        <span class="eyebrow" data-i18n="c_eyebrow"></span>
+        <h2 data-i18n="c_h2"></h2>
+      </div>
+      <p class="lead" style="margin-bottom:16px" data-i18n="c_lead"></p>
+      <ul>
+        <li data-i18n="c1"></li><li data-i18n="c2"></li><li data-i18n="c3"></li><li data-i18n="c4"></li>
+      </ul>
+    </div>
+    <div class="doc">
+      <div class="l"><span data-i18n="d1"></span><b>2026-000006</b></div>
+      <div class="l"><span data-i18n="d2"></span><b>Yasmine — A1</b></div>
+      <div class="l"><span data-i18n="d3"></span><b>400,00 MAD</b></div>
+      <div class="l"><span data-i18n="d4"></span><b>250,00 MAD</b></div>
+      <div class="l" style="border:0;padding-bottom:0"><span data-i18n="d5"></span><b>★★★★★ 5/5</b></div>
+    </div>
+  </div>
+</section>
+
+<section class="band navy contact" id="contact">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow" data-i18n="ct_eyebrow"></span>
+      <h2 style="margin-top:12px" data-i18n="ct_h2"></h2>
+      <p class="lead" style="margin-top:14px" data-i18n="ct_lead"></p>
+      <p class="sub" style="font-size:1.25rem;color:var(--onnavy-muted);margin-top:14px" data-i18n="ct_sub"></p>
+    </div>
+    <div class="ctabox">
+      <a class="btn wa" id="wa2" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-8.6 15.1L2 22l5-1.3A10 10 0 1012 2zm0 18.2a8.2 8.2 0 01-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1112 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.6.8-.8 1-.3.2-.5.1a6.7 6.7 0 01-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 00-.7.3 3 3 0 00-.9 2.2 5.2 5.2 0 001.1 2.8 12 12 0 004.6 4c1.7.7 2.1.6 2.8.5a2.4 2.4 0 001.6-1.1 2 2 0 00.1-1.1c0-.1-.2-.2-.5-.3z"/></svg><span data-i18n="ct_wa"></span></a>
+      <div class="line"><div><span data-i18n="ct_phone"></span><br><b id="phone">+212 6 00 00 00 00</b></div><button type="button" data-copy="phone" data-i18n="copy"></button></div>
+      <div class="line"><div><span data-i18n="ct_mail"></span><br><b id="mail">contact@immoprotect.ma</b></div><button type="button" data-copy="mail" data-i18n="copy"></button></div>
+      <div class="line" style="border:0"><div><span data-i18n="ct_app"></span><br><b><a href="https://immoprotect.ma" target="_blank" rel="noopener">immoprotect.ma</a></b></div></div>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap"><span data-i18n="foot1"></span><span data-i18n="foot2"></span></div></footer>
+
+<div class="pres" id="pres" hidden aria-modal="true" role="dialog">
+  <div class="prog" id="pprog"></div>
+  <div class="pbar"><a class="logo" href="#top" id="plogo">ImmoProtect<b>.</b></a><span class="pcount" id="pcount"></span><div class="right"><div class="lang" role="group"><button type="button" id="plang-fr">FR</button><button type="button" id="plang-ar" class="ar">العربية</button></div><button type="button" class="pclose" id="pres-close" data-i18n="pres_close"></button></div></div>
+  <div class="stage" id="stage"></div>
+  <div class="pnav"><button type="button" class="arr prev" id="pprev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 5l-7 7 7 7"/></svg><span data-i18n="pres_prev"></span></button><div class="dots" id="pdots"></div><button type="button" class="arr next" id="pnext"><span data-i18n="pres_next"></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 5l7 7-7 7"/></svg></button></div>
+</div>
+
+<script>
+// ---- settings you can change ----
+const WHATSAPP_NUMBER = "212600000000"; // international format, no + or spaces
+
+// ---- translations ----
+const T = {
+fr: {
+  pres_btn:'Mode présentation', pres_close:'Quitter', pres_prev:'Précédent', pres_next:'Suivant', pres_end:'Merci. Parlons de votre résidence.',
+  nav_services:'Services', nav_app:'L’application', nav_res:'Votre résidence', nav_method:'Méthode', nav_contact:'Contact', top_cta:'Visite gratuite',
+  hero_tag:'Syndic de copropriété · Maroc',
+  hero_h1:'La gestion de votre copropriété, <span>en toute sérénité</span>',
+  hero_sub:'« راحتكم هي الأولوية ديالنا »',
+  hero_lead:'ImmoProtect prend en charge votre résidence de bout en bout : sécurité, espaces verts, piscine, réparations, comptes et assemblées générales. Avec une application que chaque résident, technicien et administrateur utilise au quotidien.',
+  hero_cta1:'Voir l’application', hero_cta2:'Ma résidence avec ImmoProtect', play:'Le film ImmoProtect · 1 min 49',
+  s1t:'Une seule équipe, tous les services', s1d:'Gardiennage, jardinage, piscine, plomberie, électricité, ascenseur.',
+  s2t:'Des comptes conformes au Décret n° 2.23.700', s2d:'Les rapports comptables obligatoires, générés automatiquement.',
+  s3t:'Une application en français et en arabe', s3d:'Paiements, réclamations et suivi en temps réel pour chaque résident.',
+  svc_eyebrow:'Nos services', svc_h2:'Tout ce dont une résidence a besoin, pris en charge de bout en bout', svc_sub:'كل ما تحتاجه إقامتكم، نتكفل به من الألف إلى الياء',
+  svc1t:'Sécurité & gardiennage', svc1s:'الأمن والحراسة', svc1d:'Agents en uniforme, contrôle d’accès à l’entrée, rondes et registre des visiteurs.',
+  svc2t:'Espaces verts', svc2s:'المساحات الخضراء', svc2d:'Tonte, taille, arrosage, plantations et entretien des allées pour une résidence toujours soignée.',
+  svc3t:'Piscine', svc3s:'المسبح', svc3d:'Traitement de l’eau, nettoyage, contrôle technique et sécurité du bassin toute l’année.',
+  svc4t:'Maintenance & réparations', svc4s:'الصيانة والإصلاحات', svc4d:'Plomberie, électricité, ascenseurs, peinture : techniciens qualifiés, intervention tracée dans l’application.',
+  svc5t:'Gestion administrative & financière', svc5s:'التسيير الإداري والمالي', svc5d:'Appels de cotisations, recouvrement des impayés, budget, dépenses, comptabilité conforme et transparente.',
+  svc6t:'Assemblées générales', svc6s:'الجموع العامة', svc6d:'Convocations, ordre du jour, procès-verbaux et suivi des décisions votées par les copropriétaires.',
+  app_eyebrow:'L’application ImmoProtect', app_h2:'Une réclamation, du premier clic à la note du résident',
+  app_lead:'Suivez un vrai parcours dans l’application : un résident signale une fuite, ImmoProtect assigne le technicien, le technicien confirme, le résident évalue. Chaque espace a sa vue.',
+  tab_admin:'Espace Admin', tab_res:'Espace Résident', tab_tech:'Espace Technicien',
+  res_eyebrow:'Votre résidence avec ImmoProtect', res_h2:'Décrivez votre résidence, découvrez l’équipe que nous y mettrions',
+  res_lead:'Quelques réponses suffisent. Vous voyez l’équipe sur site, les services inclus et les étapes pour confier votre résidence à ImmoProtect. Puis vous demandez une visite gratuite en un clic.',
+  f_name:'Nom de la résidence', f_city:'Ville', f_lots:'Nombre de lots <small>(appartements)</small>', f_now:'Gestion actuelle',
+  now_none:'Pas de syndic', now_vol:'Syndic bénévole (copropriétaires)', now_pro:'Syndic professionnel', now_new:'Résidence neuve, en cours de livraison',
+  f_eq:'Équipements de la résidence', eq_gate:'Entrée sécurisée / loge', eq_garden:'Jardins & espaces verts', eq_pool:'Piscine', eq_lift:'Ascenseur(s)', eq_park:'Parking / sous-sol', eq_gym:'Salle de sport / espace commun',
+  f_w:'Ce qui compte le plus pour vous', w_sec:'Sécurité des résidents', w_clean:'Propreté et entretien', w_money:'Transparence des comptes', w_fast:'Réparations rapides',
+  r_sub:'Aperçu de la prise en charge ImmoProtect', k_team:'Personnes sur site', k_services:'Services inclus', k_delay:'Pour démarrer',
+  r_note:'Aperçu indicatif établi à partir de vos réponses. L’organisation définitive et le tarif par lot sont fixés après la visite gratuite de votre résidence et validés en assemblée générale.',
+  r_wa:'Demander une visite gratuite', r_copy:'Copier pour mon conseil syndical', copied:'Copié.',
+  m_eyebrow:'Notre méthode', m_h2:'Trois étapes pour reprendre votre résidence en main', step:'Étape',
+  m1t:'Audit sur place', m1d:'Visite de la résidence, état des équipements, revue des comptes et des contrats en cours. Vous recevez un rapport et un devis clair, par lot et par mois.',
+  m2t:'Reprise de la gestion', m2d:'Vote en assemblée générale, transfert des documents, mise en place de l’équipe sur site et création des comptes résidents dans l’application.',
+  m3t:'Suivi mensuel', m3d:'Appels de cotisations, interventions tracées, rapport financier mensuel consultable par chaque copropriétaire, assemblées préparées et animées par nos conseillers.',
+  c_eyebrow:'Transparence & conformité', c_h2:'Des comptes que chaque copropriétaire peut lire',
+  c_lead:'Le Décret n° 2.23.700 impose aux syndics une comptabilité normalisée. ImmoProtect la produit automatiquement depuis l’application, et chaque résident voit en temps réel ce qu’il a payé et ce qui a été dépensé.',
+  c1:'Rapports comptables obligatoires générés sans ressaisie', c2:'Reçus numérotés pour chaque paiement, consultables par le résident', c3:'Revenus et dépenses de la résidence visibles mois par mois', c4:'Historique complet des interventions, avec pièces et coûts',
+  d1:'Reçu', d2:'Résidence · lot', d3:'Cotisation mensuelle · payée', d4:'Intervention plomberie · terminée', d5:'Évaluation du résident',
+  ct_eyebrow:'Parlons de votre résidence', ct_h2:'Un conseiller ImmoProtect vous rappelle',
+  ct_lead:'Écrivez-nous sur WhatsApp, appelez-nous ou demandez une visite gratuite. Nous répondons en français et en darija.',
+  ct_sub:'كتبو لينا على الواتساب أو عيّطو لينا، كنجاوبو بالفرنسية وبالدارجة.',
+  ct_wa:'Écrire sur WhatsApp', ct_phone:'Téléphone', ct_mail:'E-mail', ct_app:'Application', copy:'Copier', copied2:'Copié',
+  foot1:'© 2026 ImmoProtect · Syndic de copropriété · Maroc', foot2:'« Votre tranquillité, notre priorité »',
+  wa_hello:'Bonjour ImmoProtect, je souhaite des informations pour la gestion de ma résidence.',
+  flows:{
+    admin:[
+      {img:'01_landing_immoprotect.jpg', t:'Page d’accueil', c:'<b>Trois espaces, une adresse.</b> Chacun se connecte à son espace : résident, technicien ou administrateur. Interface en français et en arabe.'},
+      {img:'02_admin_tableau_de_bord.jpg', t:'Tableau de bord', c:'<b>La résidence en un coup d’œil.</b> Lots, résidents, cotisations du mois payées ou non, revenus et dépenses sur 12 mois, réclamations ouvertes.'},
+      {img:'03_admin_reclamations.jpg', t:'Réclamations', c:'<b>Une fuite d’eau signalée, marquée urgente.</b> L’administrateur voit la demande, la photo et l’appartement, et l’assigne en un clic.'},
+      {img:'04_admin_equipe.jpg', t:'Équipe & intervenants', c:'<b>Le bon technicien pour chaque métier.</b> Plombier, électricien, agent d’entretien, avec leurs interventions terminées et leur note moyenne.'}],
+    resident:[
+      {img:'05_resident_paiements.jpg', t:'Mes paiements', c:'<b>Chaque cotisation, chaque reçu.</b> Le résident voit ce qui est payé, ce qui reste dû, et télécharge ses reçus numérotés.'},
+      {img:'06_resident_reclamation_terminee.jpg', t:'Ma réclamation', c:'<b>Intervention terminée, pièces et coût détaillés.</b> Le résident est informé à chaque étape et note le service : 5/5 « Intervention rapide et propre ».'}],
+    tech:[
+      {img:'07_technicien_interventions.jpg', t:'Mes interventions', c:'<b>Le technicien reçoit la demande, intervient, confirme.</b> Il voit ses interventions à traiter, son historique et sa note moyenne.'}]
+  },
+  team:{gate24:'gardiennage 24h/24 (3 agents en rotation)', gate:'gardien à la loge', gardenFT:'jardinier à plein temps', garden:'jardinier (passages hebdomadaires)', pool:'technicien piscine (traitement et nettoyage)', clean2:'deux agents de propreté', clean:'agent de propreté', mgr:'gestionnaire ImmoProtect dédié, joignable par les résidents'},
+  svcs:{base:['gestion administrative et financière','appels de cotisations et reçus','assemblées générales','maintenance et réparations tracées dans l’application','application résident en français et en arabe'], lift:'contrat d’entretien et contrôle des ascenseurs', park:'entretien du parking et des accès', gym:'entretien des espaces communs et planning d’utilisation', gate:'contrôle d’accès et registre des visiteurs', garden:'espaces verts et arrosage', pool:'piscine : eau, sécurité, saison d’ouverture'},
+  start:{none:'4 semaines', volunteer:'6 semaines', pro:'à l’échéance du contrat', new:'avant la livraison'},
+  wants:{sec:'la sécurité des résidents, avec un contrôle d’accès et des agents identifiés en uniforme ImmoProtect', clean:'la propreté et l’entretien, avec des rondes quotidiennes et des interventions planifiées', money:'la transparence des comptes, visibles par chaque copropriétaire dans l’application et conformes au Décret 2.23.700', fast:'la rapidité des réparations, chaque réclamation assignée à un technicien et suivie jusqu’à votre évaluation'},
+  next:{none:'visite gratuite, puis constitution du syndicat et vote de la première assemblée générale', volunteer:'visite gratuite, présentation au conseil syndical, vote en assemblée générale puis transfert des documents', pro:'visite gratuite, comparaison avec votre contrat actuel, reprise à l’échéance sans interruption de service', new:'visite avec le promoteur, mise en place de l’équipe avant la livraison, création des comptes résidents dès l’arrivée'},
+  r_team:'Équipe sur site', r_for:'pour {n} lots', r_services:'Services inclus', r_wants:'Vos priorités', r_next:'Pour démarrer',
+  sum_title:'Demande de visite ImmoProtect', sum_lots:'lots, gestion actuelle', sum_eq:'Équipements', sum_w:'Priorités', sum_none:'non précisés', sum_end:'Je souhaite une visite gratuite de ma résidence.', sep:' ; '
+},
+ar: {
+  pres_btn:'وضع العرض', pres_close:'خروج', pres_prev:'السابق', pres_next:'التالي', pres_end:'شكراً. لنتحدث عن إقامتكم.',
+  nav_services:'الخدمات', nav_app:'التطبيق', nav_res:'إقامتكم', nav_method:'طريقتنا', nav_contact:'اتصلوا بنا', top_cta:'زيارة مجانية',
+  hero_tag:'سانديك العمارات والإقامات · المغرب',
+  hero_h1:'تسيير إقامتكم، <span>براحة بال تامة</span>',
+  hero_sub:'« Votre tranquillité, notre priorité »',
+  hero_lead:'إيموبروتكت تتكفل بإقامتكم من الألف إلى الياء: الأمن، المساحات الخضراء، المسبح، الإصلاحات، الحسابات والجموع العامة. مع تطبيق يستعمله كل ساكن وتقني ومسيّر يومياً.',
+  hero_cta1:'شاهدوا التطبيق', hero_cta2:'إقامتي مع إيموبروتكت', play:'فيلم إيموبروتكت · دقيقة و49 ثانية',
+  s1t:'فريق واحد، كل الخدمات', s1d:'الحراسة، البستنة، المسبح، السباكة، الكهرباء، المصعد.',
+  s2t:'حسابات مطابقة للمرسوم رقم 2.23.700', s2d:'التقارير المحاسبية الإلزامية، تُنجز تلقائياً.',
+  s3t:'تطبيق بالفرنسية والعربية', s3d:'الأداءات، الشكايات والمتابعة في الوقت الحقيقي لكل ساكن.',
+  svc_eyebrow:'خدماتنا', svc_h2:'كل ما تحتاجه الإقامة، نتكفل به من الألف إلى الياء', svc_sub:'Tout ce dont une résidence a besoin, pris en charge de bout en bout',
+  svc1t:'الأمن والحراسة', svc1s:'Sécurité & gardiennage', svc1d:'حراس بزي موحد، مراقبة الدخول عند المدخل، جولات وسجل للزوار.',
+  svc2t:'المساحات الخضراء', svc2s:'Espaces verts', svc2d:'جز العشب، التقليم، السقي، الغرس وصيانة الممرات لإقامة أنيقة دائماً.',
+  svc3t:'المسبح', svc3s:'Piscine', svc3d:'معالجة المياه، التنظيف، المراقبة التقنية وسلامة الحوض طوال السنة.',
+  svc4t:'الصيانة والإصلاحات', svc4s:'Maintenance & réparations', svc4d:'السباكة، الكهرباء، المصاعد، الصباغة: تقنيون مؤهلون، وكل تدخل مسجّل في التطبيق.',
+  svc5t:'التسيير الإداري والمالي', svc5s:'Gestion administrative & financière', svc5d:'استخلاص واجبات السانديك، تحصيل المتأخرات، الميزانية، المصاريف، ومحاسبة مطابقة وشفافة.',
+  svc6t:'الجموع العامة', svc6s:'Assemblées générales', svc6d:'الاستدعاءات، جدول الأعمال، المحاضر ومتابعة القرارات التي صوّت عليها الملاك.',
+  app_eyebrow:'تطبيق إيموبروتكت', app_h2:'شكاية واحدة، من أول نقرة إلى تقييم الساكن',
+  app_lead:'تابعوا مساراً حقيقياً داخل التطبيق: ساكن يبلّغ عن تسرب ماء، إيموبروتكت تكلّف التقني، التقني يؤكد الإصلاح، والساكن يقيّم. لكل فضاء واجهته.',
+  tab_admin:'فضاء الإدارة', tab_res:'فضاء الساكن', tab_tech:'فضاء التقني',
+  res_eyebrow:'إقامتكم مع إيموبروتكت', res_h2:'صفوا إقامتكم، واكتشفوا الفريق الذي سنضعه فيها',
+  res_lead:'بضع إجابات تكفي. سترون الفريق في عين المكان، الخدمات المشمولة، وخطوات تفويض إقامتكم إلى إيموبروتكت. ثم تطلبون زيارة مجانية بنقرة واحدة.',
+  f_name:'اسم الإقامة', f_city:'المدينة', f_lots:'عدد الشقق', f_now:'التسيير الحالي',
+  now_none:'بدون سانديك', now_vol:'سانديك متطوع (الملاك)', now_pro:'سانديك مهني', now_new:'إقامة جديدة قيد التسليم',
+  f_eq:'تجهيزات الإقامة', eq_gate:'مدخل مؤمّن / كشك حراسة', eq_garden:'حدائق ومساحات خضراء', eq_pool:'مسبح', eq_lift:'مصعد (مصاعد)', eq_park:'موقف سيارات / قبو', eq_gym:'قاعة رياضة / فضاء مشترك',
+  f_w:'ما يهمكم أكثر', w_sec:'أمن السكان', w_clean:'النظافة والصيانة', w_money:'شفافية الحسابات', w_fast:'إصلاحات سريعة',
+  r_sub:'لمحة عن تكفل إيموبروتكت', k_team:'أشخاص في عين المكان', k_services:'خدمات مشمولة', k_delay:'للانطلاق',
+  r_note:'لمحة استرشادية مبنية على إجاباتكم. يُحدَّد التنظيم النهائي والتعريفة لكل شقة بعد الزيارة المجانية لإقامتكم، ويُصادق عليهما في الجمع العام.',
+  r_wa:'طلب زيارة مجانية', r_copy:'نسخ لمجلس السانديك', copied:'تم النسخ.',
+  m_eyebrow:'طريقتنا', m_h2:'ثلاث خطوات لاستعادة زمام إقامتكم', step:'الخطوة',
+  m1t:'تشخيص في عين المكان', m1d:'زيارة الإقامة، حالة التجهيزات، مراجعة الحسابات والعقود الجارية. تتوصلون بتقرير وعرض ثمن واضح، لكل شقة وكل شهر.',
+  m2t:'تسلّم التسيير', m2d:'التصويت في الجمع العام، نقل الوثائق، وضع الفريق في عين المكان وإنشاء حسابات السكان في التطبيق.',
+  m3t:'متابعة شهرية', m3d:'استخلاص الواجبات، تدخلات مسجّلة، تقرير مالي شهري يطلع عليه كل مالك، وجموع عامة يحضّرها ويديرها مستشارونا.',
+  c_eyebrow:'الشفافية والمطابقة', c_h2:'حسابات يمكن لكل مالك قراءتها',
+  c_lead:'يفرض المرسوم رقم 2.23.700 على السانديك محاسبة موحدة. إيموبروتكت تنجزها تلقائياً من التطبيق، ويرى كل ساكن في الوقت الحقيقي ما أدّاه وما تم صرفه.',
+  c1:'تقارير محاسبية إلزامية تُنجز دون إعادة إدخال', c2:'وصولات مرقّمة لكل أداء، يطلع عليها الساكن', c3:'مداخيل ومصاريف الإقامة ظاهرة شهراً بشهر', c4:'سجل كامل للتدخلات، مع القطع والتكاليف',
+  d1:'وصل', d2:'الإقامة · الشقة', d3:'واجب شهري · مؤدّى', d4:'تدخل سباكة · منتهٍ', d5:'تقييم الساكن',
+  ct_eyebrow:'لنتحدث عن إقامتكم', ct_h2:'مستشار إيموبروتكت يتصل بكم',
+  ct_lead:'راسلونا على واتساب، اتصلوا بنا أو اطلبوا زيارة مجانية. نجيب بالعربية والفرنسية.',
+  ct_sub:'Écrivez-nous sur WhatsApp ou appelez-nous, nous répondons en français et en darija.',
+  ct_wa:'راسلونا على واتساب', ct_phone:'الهاتف', ct_mail:'البريد الإلكتروني', ct_app:'التطبيق', copy:'نسخ', copied2:'تم النسخ',
+  foot1:'© 2026 إيموبروتكت · سانديك الإقامات · المغرب', foot2:'« راحتكم هي الأولوية ديالنا »',
+  wa_hello:'السلام عليكم إيموبروتكت، أريد معلومات حول تسيير إقامتي.',
+  flows:{
+    admin:[
+      {img:'01_landing_immoprotect.jpg', t:'صفحة الاستقبال', c:'<b>ثلاثة فضاءات، عنوان واحد.</b> كل واحد يدخل إلى فضائه: ساكن، تقني أو مسيّر. واجهة بالفرنسية والعربية.'},
+      {img:'02_admin_tableau_de_bord.jpg', t:'لوحة القيادة', c:'<b>الإقامة في لمحة.</b> الشقق، السكان، واجبات الشهر المؤداة وغير المؤداة، المداخيل والمصاريف على 12 شهراً، الشكايات المفتوحة.'},
+      {img:'03_admin_reclamations.jpg', t:'الشكايات', c:'<b>تسرب ماء مبلّغ عنه، مصنّف مستعجلاً.</b> المسيّر يرى الطلب والصورة والشقة، ويكلّف التقني بنقرة واحدة.'},
+      {img:'04_admin_equipe.jpg', t:'الفريق والمتدخلون', c:'<b>التقني المناسب لكل حرفة.</b> سباك، كهربائي، عامل نظافة، مع تدخلاتهم المنجزة ومعدل تقييمهم.'}],
+    resident:[
+      {img:'05_resident_paiements.jpg', t:'أداءاتي', c:'<b>كل واجب، كل وصل.</b> الساكن يرى ما أدّاه وما بقي عليه، ويحمّل وصولاته المرقّمة.'},
+      {img:'06_resident_reclamation_terminee.jpg', t:'شكايتي', c:'<b>التدخل منتهٍ، القطع والتكلفة مفصّلة.</b> الساكن يُخبَر في كل مرحلة ويقيّم الخدمة: 5/5 « تدخل سريع ونظيف ».'}],
+    tech:[
+      {img:'07_technicien_interventions.jpg', t:'تدخلاتي', c:'<b>التقني يتوصل بالطلب، يتدخل، ويؤكد.</b> يرى التدخلات التي عليه معالجتها، سجله ومعدل تقييمه.'}]
+  },
+  team:{gate24:'حراسة 24 ساعة (3 حراس بالتناوب)', gate:'حارس في الكشك', gardenFT:'بستاني بدوام كامل', garden:'بستاني (زيارات أسبوعية)', pool:'تقني مسبح (معالجة وتنظيف)', clean2:'عاملا نظافة', clean:'عامل نظافة', mgr:'مسيّر إيموبروتكت مخصص، في متناول السكان'},
+  svcs:{base:['التسيير الإداري والمالي','استخلاص الواجبات والوصولات','الجموع العامة','صيانة وإصلاحات مسجّلة في التطبيق','تطبيق للسكان بالفرنسية والعربية'], lift:'عقد صيانة ومراقبة المصاعد', park:'صيانة موقف السيارات والمداخل', gym:'صيانة الفضاءات المشتركة وبرنامج استعمالها', gate:'مراقبة الدخول وسجل الزوار', garden:'المساحات الخضراء والسقي', pool:'المسبح: المياه، السلامة، موسم الفتح'},
+  start:{none:'4 أسابيع', volunteer:'6 أسابيع', pro:'عند انتهاء العقد', new:'قبل التسليم'},
+  wants:{sec:'أمن السكان، بمراقبة الدخول وحراس معرَّفين بزي إيموبروتكت', clean:'النظافة والصيانة، بجولات يومية وتدخلات مبرمجة', money:'شفافية الحسابات، ظاهرة لكل مالك في التطبيق ومطابقة للمرسوم 2.23.700', fast:'سرعة الإصلاحات، كل شكاية تُسند إلى تقني وتُتابع حتى تقييمكم'},
+  next:{none:'زيارة مجانية، ثم تأسيس اتحاد الملاك والتصويت في أول جمع عام', volunteer:'زيارة مجانية، عرض أمام مجلس السانديك، تصويت في الجمع العام ثم نقل الوثائق', pro:'زيارة مجانية، مقارنة مع عقدكم الحالي، تسلّم التسيير عند انتهاء العقد دون انقطاع الخدمة', new:'زيارة مع المنعش العقاري، وضع الفريق قبل التسليم، إنشاء حسابات السكان منذ وصولهم'},
+  r_team:'الفريق في عين المكان', r_for:'لـ {n} شقة', r_services:'الخدمات المشمولة', r_wants:'أولوياتكم', r_next:'للانطلاق',
+  sum_title:'طلب زيارة إيموبروتكت', sum_lots:'شقة، التسيير الحالي', sum_eq:'التجهيزات', sum_w:'الأولويات', sum_none:'غير محددة', sum_end:'أرغب في زيارة مجانية لإقامتي.', sep:'؛ '
+}};
+
+let lang = 'fr';
+try { const saved = localStorage.getItem('ip_lang'); if (saved === 'ar' || saved === 'fr') lang = saved; } catch(e){}
+const $ = id => document.getElementById(id);
+function t(k){ return T[lang][k]; }
+
+function applyLang(){
+  const root = document.documentElement;
+  root.setAttribute('lang', lang); root.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+  document.querySelectorAll('[data-i18n]').forEach(el => { el.innerHTML = t(el.dataset.i18n); });
+  document.querySelectorAll('.proc .p').forEach((p,i) => p.setAttribute('data-step', t('step') + ' ' + (i+1)));
+  $('lang-fr').setAttribute('aria-pressed', lang === 'fr'); $('lang-ar').setAttribute('aria-pressed', lang === 'ar');
+  $('playbtn').setAttribute('aria-label', t('play'));
+  $('wa2').href = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(t('wa_hello'));
+  try { localStorage.setItem('ip_lang', lang); } catch(e){}
+  renderSteps(); show(); diag();
+  if (pSlides.length){
+    pSlides.filter(d=>d.dataset.space).forEach(renderAppSlide);
+    $('plang-fr').setAttribute('aria-pressed', lang==='fr'); $('plang-ar').setAttribute('aria-pressed', lang==='ar');
+    const pw = $('pwa2'); if (pw) pw.href = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(t('wa_hello'));
+    if (pOpen) { $('pcount').textContent = (pIdx+1) + ' / ' + pSlides.length; }
+  }
+}
+$('lang-fr').addEventListener('click', ()=>{ lang='fr'; applyLang(); });
+$('lang-ar').addEventListener('click', ()=>{ lang='ar'; applyLang(); });
+
+// ---- hero video ----
+const film = $('film'), playbtn = $('playbtn');
+playbtn.addEventListener('click', () => { playbtn.hidden = true; film.play().catch(()=>{}); });
+film.addEventListener('play', () => { playbtn.hidden = true; });
+
+// ---- app walkthrough ----
+const stepsEl = $('steps'), shot = $('shot'), cap = $('cap');
+let space = 'admin', idx = 0;
+function renderSteps(){
+  stepsEl.innerHTML = '';
+  T[lang].flows[space].forEach((s,i)=>{
+    const b = document.createElement('button'); b.className='step'; b.type='button';
+    b.setAttribute('aria-current', i===idx ? 'true' : 'false');
+    const first = s.c.replace(/<[^>]+>/g,'').split('.')[0];
+    b.innerHTML = `<i>${i+1}</i><div><b>${s.t}</b><span>${first}.</span></div>`;
+    b.addEventListener('click', ()=>{ idx=i; show(); });
+    stepsEl.appendChild(b);
+  });
+}
+function show(){
+  const s = T[lang].flows[space][idx];
+  shot.src = s.img; shot.alt = s.t + ' — ImmoProtect'; cap.innerHTML = s.c;
+  [...stepsEl.children].forEach((b,i)=> b.setAttribute('aria-current', i===idx ? 'true':'false'));
+}
+document.querySelectorAll('.tab').forEach(tb=> tb.addEventListener('click', ()=>{
+  document.querySelectorAll('.tab').forEach(x=> x.setAttribute('aria-selected','false'));
+  tb.setAttribute('aria-selected','true'); space = tb.dataset.space; idx = 0; renderSteps(); show();
+}));
+
+// ---- votre résidence avec ImmoProtect ----
+let summary = '';
+function diag(){
+  const L = T[lang];
+  const name = $('rname').value.trim() || (lang==='ar' ? 'إقامتكم' : 'Votre résidence'), city = $('city').value.trim();
+  const lots = Math.max(1, +$('lots').value || 0), now = $('now').value;
+  const has = id => $(id).checked;
+  $('rtitle').textContent = name + (city ? ' · ' + city : '');
+  const team = [];
+  if (has('eq_gate')) team.push(lots >= 60 ? L.team.gate24 : L.team.gate);
+  if (has('eq_garden')) team.push(lots >= 80 ? L.team.gardenFT : L.team.garden);
+  if (has('eq_pool')) team.push(L.team.pool);
+  team.push(lots >= 100 ? L.team.clean2 : L.team.clean);
+  team.push(L.team.mgr);
+  const services = [...L.svcs.base];
+  if (has('eq_lift')) services.push(L.svcs.lift);
+  if (has('eq_park')) services.push(L.svcs.park);
+  if (has('eq_gym')) services.push(L.svcs.gym);
+  if (has('eq_gate')) services.push(L.svcs.gate);
+  if (has('eq_garden')) services.push(L.svcs.garden);
+  if (has('eq_pool')) services.push(L.svcs.pool);
+  const start = L.start[now];
+  $('k_team').textContent = String(team.length); $('k_services').textContent = String(services.length); $('k_delay').textContent = start;
+  const sep = lang==='ar' ? '، ' : ', ';
+  const items = [];
+  items.push(`<b>${L.r_team}</b> ${L.r_for.replace('{n}', lots)} : ${team.join(sep)}.`);
+  items.push(`<b>${L.r_services}</b> : ${services.join(sep)}.`);
+  const wants = [];
+  if (has('w_sec')) wants.push(L.wants.sec); if (has('w_clean')) wants.push(L.wants.clean);
+  if (has('w_money')) wants.push(L.wants.money); if (has('w_fast')) wants.push(L.wants.fast);
+  if (wants.length) items.push(`<b>${L.r_wants}</b> : ${wants.join(L.sep)}.`);
+  items.push(`<b>${L.r_next}</b> : ${L.next[now]}.`);
+  $('rlist').innerHTML = items.map(i=>`<li>${i}</li>`).join('');
+  const lbl = id => $(id).parentElement.querySelector('span').textContent.trim();
+  summary = `${L.sum_title} — ${name}${city ? ' (' + city + ')' : ''}\n` +
+    `• ${lots} ${L.sum_lots} : ${$('now').options[$('now').selectedIndex].text}\n` +
+    `• ${L.sum_eq} : ${['eq_gate','eq_garden','eq_pool','eq_lift','eq_park','eq_gym'].filter(has).map(lbl).join(sep) || L.sum_none}\n` +
+    `• ${L.sum_w} : ${['w_sec','w_clean','w_money','w_fast'].filter(has).map(lbl).join(sep) || L.sum_none}\n` +
+    L.sum_end;
+  $('wa').href = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(summary);
+}
+$('dform').addEventListener('input', diag);
+$('dform').addEventListener('submit', e=>{ e.preventDefault(); diag(); });
+
+function copyText(text, msgEl){
+  const done = ()=>{ if (msgEl) { msgEl.textContent = t('copied'); setTimeout(()=> msgEl.textContent='', 2000); } };
+  try { navigator.clipboard.writeText(text).then(done).catch(()=>fallback()); } catch(e){ fallback(); }
+  function fallback(){ const ta=document.createElement('textarea'); ta.value=text; document.body.appendChild(ta); ta.select(); try{document.execCommand('copy'); done();}catch(e){} ta.remove(); }
+}
+$('copy').addEventListener('click', ()=> copyText(summary, $('toast')));
+document.querySelectorAll('[data-copy]').forEach(b=> b.addEventListener('click', ()=>{ copyText($(b.dataset.copy).textContent); b.textContent=t('copied2'); setTimeout(()=>b.textContent=t('copy'),2000); }));
+
+// ---- presentation mode ----
+const pres = $('pres'), stage = $('stage'), pdots = $('pdots');
+let pOpen = false, pIdx = 0, pSlides = [], resHome = null, resPlaceholder = null;
+function buildSlides(){
+  stage.innerHTML = ''; pSlides = [];
+  const mk = html => { const d = document.createElement('div'); d.className = 'slide'; d.innerHTML = `<div class="in">${html}</div>`; stage.appendChild(d); pSlides.push(d); return d; };
+  // 1 film
+  const s1 = mk(`<div class="player"><video id="pfilm" poster="hero.jpg" preload="metadata" playsinline controls src="video.mp4"></video></div>`);
+  // 2 promise
+  mk(`<span class="tag" data-i18n="hero_tag"></span><h1 data-i18n="hero_h1"></h1><p class="lead" data-i18n="hero_lead"></p><div class="strip3"><div><strong data-i18n="s1t"></strong><span data-i18n="s1d"></span></div><div><strong data-i18n="s2t"></strong><span data-i18n="s2d"></span></div><div><strong data-i18n="s3t"></strong><span data-i18n="s3d"></span></div></div>`);
+  // 3 services
+  const svcHtml = document.querySelector('#services .services').outerHTML;
+  mk(`<span class="eyebrow" data-i18n="svc_eyebrow"></span><h2 data-i18n="svc_h2"></h2>${svcHtml}`);
+  // 4-6 app views
+  ['admin','resident','tech'].forEach(sp => {
+    const d = mk(`<span class="eyebrow" data-i18n="app_eyebrow"></span><div class="appv"><div><h2 data-i18n="tab_${sp==='resident'?'res':sp}"></h2><p class="lead" data-i18n="app_lead"></p><div class="steps"></div></div><div class="device"><div class="bar"><i></i><i></i><i></i></div><img alt="ImmoProtect"><div class="cap"></div></div></div>`);
+    d.dataset.space = sp; d.dataset.idx = '0';
+  });
+  // 7 residence (live form moved in)
+  const s7 = mk(`<span class="eyebrow" data-i18n="res_eyebrow"></span><h2 data-i18n="res_h2"></h2><div class="reshost"></div>`);
+  // 8 method + transparency
+  const procHtml = document.querySelector('#methode .proc').outerHTML;
+  mk(`<span class="eyebrow" data-i18n="m_eyebrow"></span><h2 data-i18n="m_h2"></h2>${procHtml}<div class="two" style="margin-top:8px"><div><h3 data-i18n="c_h2" style="margin-bottom:8px"></h3><ul class="law-ul" style="color:var(--onnavy-muted);padding-inline-start:18px;margin:0;display:grid;gap:6px"><li data-i18n="c1"></li><li data-i18n="c2"></li><li data-i18n="c3"></li><li data-i18n="c4"></li></ul></div></div>`);
+  // 9 contact
+  const ctaHtml = document.querySelector('#contact .ctabox').outerHTML.replace(/id="wa2"/,'id="pwa2"').replace(/id="phone"/,'id="pphone"').replace(/id="mail"/,'id="pmail"').replace(/data-copy="phone"/,'data-copy="pphone"').replace(/data-copy="mail"/,'data-copy="pmail"');
+  mk(`<div class="two"><div><span class="eyebrow" data-i18n="ct_eyebrow"></span><h2 data-i18n="pres_end" style="margin-top:12px"></h2><p class="lead" style="margin-top:12px" data-i18n="ct_lead"></p><p class="sub" style="font-size:1.2rem;color:var(--onnavy-muted);margin-top:12px" data-i18n="ct_sub"></p></div>${ctaHtml}</div>`);
+  // dots
+  pdots.innerHTML = ''; pSlides.forEach((_,i)=>{ const b=document.createElement('button'); b.type='button'; b.setAttribute('aria-label', String(i+1)); b.addEventListener('click', ()=>goTo(i)); pdots.appendChild(b); });
+  // app slides behaviour
+  pSlides.filter(d=>d.dataset.space).forEach(d => renderAppSlide(d));
+  // contact copy buttons in slide
+  pSlides[8].querySelectorAll('[data-copy]').forEach(b=> b.addEventListener('click', ()=>{ copyText($(b.dataset.copy).textContent); b.textContent=t('copied2'); setTimeout(()=>b.textContent=t('copy'),2000); }));
+}
+function renderAppSlide(d){
+  const sp = d.dataset.space, flow = T[lang].flows[sp], i = +d.dataset.idx;
+  const st = d.querySelector('.steps'); st.innerHTML = '';
+  flow.forEach((s,k)=>{ const b=document.createElement('button'); b.className='step'; b.type='button'; b.setAttribute('aria-current', k===i?'true':'false');
+    b.innerHTML = `<i>${k+1}</i><div><b>${s.t}</b><span>${s.c.replace(/<[^>]+>/g,'').split('.')[0]}.</span></div>`;
+    b.addEventListener('click', ()=>{ d.dataset.idx = String(k); renderAppSlide(d); }); st.appendChild(b); });
+  d.querySelector('img').src = flow[i].img; d.querySelector('.cap').innerHTML = flow[i].c;
+}
+function goTo(i){
+  i = Math.max(0, Math.min(pSlides.length-1, i));
+  pSlides.forEach((d,k)=>{ d.classList.toggle('on', k===i); d.classList.toggle('out', k<i); });
+  pIdx = i;
+  $('pcount').textContent = (i+1) + ' / ' + pSlides.length;
+  $('pprog').style.width = ((i+1)/pSlides.length*100) + '%';
+  [...pdots.children].forEach((b,k)=> b.setAttribute('aria-current', k===i?'true':'false'));
+  $('pprev').disabled = i===0; $('pnext').disabled = i===pSlides.length-1;
+  const pf = $('pfilm'); if (pf && i!==0) pf.pause();
+}
+function openPres(){
+  if (!pSlides.length) buildSlides();
+  // move the live residence block into slide 7
+  const diag = document.querySelector('#residence .diag');
+  if (diag && !resHome){ resHome = diag.parentElement; resPlaceholder = document.createComment('diag'); resHome.replaceChild(resPlaceholder, diag); pSlides[6].querySelector('.reshost').appendChild(diag); }
+  pres.hidden = false; pOpen = true; document.body.style.overflow = 'hidden';
+  applyLang(); goTo(0); $('pnext').focus();
+}
+function closePres(){
+  const diag = pSlides.length && pSlides[6].querySelector('.diag');
+  if (diag && resHome){ resHome.replaceChild(diag, resPlaceholder); resHome = null; }
+  const pf = $('pfilm'); if (pf) pf.pause();
+  pres.hidden = true; pOpen = false; document.body.style.overflow = '';
+  if (location.hash === '#presentation') history.replaceState(null, '', location.pathname);
+}
+$('pres-open').addEventListener('click', openPres);
+$('pres-close').addEventListener('click', closePres);
+$('plogo').addEventListener('click', e=>{ e.preventDefault(); closePres(); });
+$('pprev').addEventListener('click', ()=>goTo(pIdx-1));
+$('pnext').addEventListener('click', ()=>goTo(pIdx+1));
+$('plang-fr').addEventListener('click', ()=>{ lang='fr'; applyLang(); });
+$('plang-ar').addEventListener('click', ()=>{ lang='ar'; applyLang(); });
+document.addEventListener('keydown', e=>{
+  if (!pOpen) return;
+  const rtl = lang==='ar';
+  if (e.key==='Escape') closePres();
+  else if (e.key==='ArrowRight' || e.key==='PageDown' || e.key===' ') { if (e.target.tagName!=='INPUT') { e.preventDefault(); goTo(pIdx + (rtl && e.key==='ArrowRight' ? -1 : 1)); } }
+  else if (e.key==='ArrowLeft' || e.key==='PageUp') { e.preventDefault(); goTo(pIdx - (rtl && e.key==='ArrowLeft' ? -1 : 1)); }
+});
+let tx = null;
+stage.addEventListener('touchstart', e=>{ tx = e.touches[0].clientX; }, {passive:true});
+stage.addEventListener('touchend', e=>{ if (tx===null) return; const dx = e.changedTouches[0].clientX - tx; tx = null; if (Math.abs(dx) < 50) return; const dir = dx < 0 ? 1 : -1; goTo(pIdx + (lang==='ar' ? -dir : dir)); }, {passive:true});
+
+applyLang();
+if (location.hash === '#presentation') openPres();
+</script>
+
+</body>
+</html>
